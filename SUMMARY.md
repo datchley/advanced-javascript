@@ -1,6 +1,7 @@
 # Summary
 
+* [Introduction](README.md)
 * [Introduction](introduction.md)
-* Basics
+* [Basics](basics.md)
 * Scopes & Closures
 
