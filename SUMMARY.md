@@ -5,7 +5,7 @@
 * [Types, Values & Scope](typesvalues_and_scope.md)
    * [Working with Lists](working_with_lists.md)
    * [Functions](functions.md)
-   * Types & Coercion
+   * [Types & Coercion](types_&_coercion.md)
    * Scope
 * [Understanding Prototypes](understanding_prototypes.md)
 * [Asynchronous Concepts](asynchronous_concepts.md)
