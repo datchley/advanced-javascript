@@ -82,10 +82,68 @@ Now, this isn't a "*real*" fluent interface; but it does resemble one from a cha
  
 ## Looping the old fashioned way
 
-Sometimes we need our loops to be extremely efficient. Using `.map`, `.reduce` and `.filter` should be your first choice for a declarative implementation using lists; but, if you are dealing with large datasets (*in the thousands or more*), using a standard `for` loop will always be faster.
+Sometimes we need our loops to be extremely efficient. Using `.map`, `.reduce` and `.filter` should be your first choice for a declarative implementation using lists; but, if you are dealing with large datasets (*in the thousands or more*), using a standard `for` or `while` loop will nearly always be faster.
 
+### Efficiency
+Using a `for` or `while` can be improved by caching the length of the list and potentially by working backwards if possible.  Keep in mind that the three parts of a `for` loop occur at certain stages:
 
+```
+for (var i=0; i < 10; i++)
+```
+The 1<sup>st</sup> expression happens only once, prior to iteration over the loop items. The 2<sup>nd</sup> expression is evaluated each time through the loop at the beginning of the loop block; and the 3<sup>rd</sup> expression is evaluated each time through the loop at the end of the loop block.
 
+Realizing this, we can minimize the work the javascript compiler has to do by keeping the 2<sup>nd</sup> and 3<sup>rd</sup> expressions as simple to evaluate as possible (*most modern browsers account for this fact and will properly optimize a `for` loop regardless of how it is written today*)
+
+```javascript
+var arr = [1,2,3,4];
+for (var i=0, l = arr.length; i < l; i++) { ... }
+
+var arr = [1,2,3,4],
+    index = arr.length;
+    
+while (index--) {
+   // do something with arr[index]
+}
+```
+Keeping with the same concepts mentioned above, using a `while()` loop and working our index backwards also minimizes the number of expressions that need evaluating during the loop as well. This may or may not be possible depending on the needs of your program and data. 
+
+#### Looping through Objects
+You can also loop through an Object's keys using a `for..in` loop. However, be sure that you use test each property using `.hasOwnProperty()`, otherwise you'll cycle through all the immediate properties on that object as well as all the properties in the object's prototype, and it's prototype, ad infinitum.
+
+```javascript
+ var obj = { 
+    name: 'Nathon Fillion', 
+    title: 'Cap\'n Tight Pants' 
+ };
+ for (var prop in obj) {
+   if (obj.hasOwnProperty(prop)) {
+     // do something with obj[prop]
+     // prop is direct property on obj here
+   }
+ }
+```
+
+### Minimize the work done in loops
+Clearly, doing lots of heavy processing inside a loop that might run for 10s of thousands of iterations is going to be an expensive operation.  Try to minimize the amount of work you're doing inside a loop, especially any DOM manipulations.
+
+```javascript
+ var items = [],
+     $list = $('ul.serenity'),
+     names = ['Kaylee', 'Book', 'Wash', 'Zoe'];
+
+ // GOOD: build fragments, append once outside loop
+ //       use cached references to elements, instances
+ for (var i=0, l=names.length; i < l; i++) {
+   items.push($('<li/>').text(names[i]));
+ }
+ $list.append(items);
+
+ // BAD: append multiple times inside loop
+ //      don't cache a reference
+ for (var i=0; i < names.length; i++) {
+   $('ul.serenity').append($('<li/>').text(names[i]));
+ }
+ ```
 
 ---
 ### Exercises
