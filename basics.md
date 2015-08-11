@@ -1,7 +1,7 @@
 An exercise...
 
 {% exercise %}
-Define a variable `x` equal to 10.
+Define the `isEven`, `getSquare` and `addToSum` function expressions below to correctly build the `res` result set and `sum` variables.
 {% initial %}
 var data = [1,2,3,4,5,6,7,8,9,10],
     isEven = /* TODO: filter function */,
