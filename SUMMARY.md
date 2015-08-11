@@ -2,5 +2,5 @@
 
 * [Introduction](README.md)
 * [Basics](basics.md)
-* [Scopes & Closures](scopes_&_closures.md)
+* [Types, Values & Scope](types_values_and_scope.md)
 
