@@ -6,6 +6,7 @@
    * [Working with Lists](working_with_lists.md)
    * Functions
    * Types & Coercion
+   * Scope
 * [Understanding Prototypes](understanding_prototypes.md)
 * [Asynchronous Concepts](asynchronous_concepts.md)
 * [Common Idioms](common_idioms.md)
