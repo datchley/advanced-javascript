@@ -4,7 +4,7 @@
 * [Basics](basics.md)
 * [Types, Values & Scope](typesvalues_and_scope.md)
    * [Working with Lists](working_with_lists.md)
-   * Functions
+   * [Functions](functions.md)
    * Types & Coercion
    * Scope
 * [Understanding Prototypes](understanding_prototypes.md)
