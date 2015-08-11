@@ -6,4 +6,5 @@
 * Understanding Prototypes
 * Asynchronous Concepts
 * Common Idioms
+* Working in ES6
 
