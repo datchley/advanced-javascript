@@ -5,6 +5,6 @@
 * [Types, Values & Scope](typesvalues_and_scope.md)
 * [Understanding Prototypes](understanding_prototypes.md)
 * [Asynchronous Concepts](asynchronous_concepts.md)
-* Common Idioms
+* [Common Idioms](common_idioms.md)
 * Working in ES6
 
