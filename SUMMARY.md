@@ -4,6 +4,7 @@
 * [Basics](basics.md)
 * [Types, Values & Scope](typesvalues_and_scope.md)
    * [Working with Lists](working_with_lists.md)
+   * Functions
 * [Understanding Prototypes](understanding_prototypes.md)
 * [Asynchronous Concepts](asynchronous_concepts.md)
 * [Common Idioms](common_idioms.md)
