@@ -53,11 +53,40 @@ var byfour = evens.reduce((groups, n) => {
 // => byfour: { 'yes': [4,8], 'no': [2,6,10] }
 ```
 
-Unlike map() and filter(), however, reduce() doesn't return a new list, it returns the aggregate value directly. In the case of our number list, our accumulated value was the initial empty object passed as the last parameter to the reduce() call. We then used that to create a property based on the divisible-by-four-ness of each number that served as a bucket to put the numbers in.
+Unlike `map()` and `filter()`, however, `reduce()` doesn't return a new list, it returns the aggregate value directly. 
+
+In the case of our number list, our accumulated value was the initial empty object passed as the last parameter to the `reduce()` call. We then used that to create a property based on the *divisible-by-four-ness* of each number that served as a bucket to put the numbers in.
  
+## Being fluent-ish
+
+A fluent API or interface is one that provides better readability through:
+
+1. chaining of method calls over some base context
+1. defining operations via the return value of each called method
+1. is self-referential, where the new context is equivalent to the last
+1. terminates via return of a void context
+
+*JQuery* works likes this, as well as libraries like *lodash* and *underscore* using the `_.chain()` method wrapper, allowing chaining of method calls on a base context that represents a DOM element tree.
+
+Because `map()` and `filter()` return new arrays, we can take advantage of this and chain multiple array operations together.
+
+```javascript
+[1,2,3,4,5,6,7,8,9,10]
+  .map((n) => n*2)
+  .filter((n) => 10 % n == 0)
+  .reduce((sum, n) => (sum += n), 0);
+// => 12
+```
+
+Now, this isn't a "*real*" fluent interface; but it does resemble one from a chaining perspective and gives us a more declarative approach to implementing operations on lists. 
  
- 
- 
+## Looping the old fashioned way
+
+Sometimes we need our loops to be extremely efficient. Using `.map`, `.reduce` and `.filter` should be your first choice for a declarative implementation using lists; but, if you are dealing with large datasets (*in the thousands or more*), using a standard `for` loop will always be faster.
+
+
+
+
 ---
 ### Exercises
 
