@@ -5,7 +5,7 @@ I don't want to belabor the basics of function declaration and definition in Jav
 * function expressions (named & anonymous)
 
 Functions can be declared using the `function` keyword and a name, as in
-```
+```javascript
 function compare(a,b) {
   return a == b ? 0 : (a < b) ? -1 : 1;
 }
@@ -14,7 +14,7 @@ This declares a function called `compare`, which is *hoisted* to the top of its 
 
 Functions can also be treated as values, meaning you can assign them to variables and pass and return them to and from functions as well. These are referred to as *first-class functions* and lead to *higher-order functions* when working in a more declarative, functional style of programming.
 
-```
+```javascript
 // function expression
 var even = function(n){ return n % 2 == 0; };  
 
@@ -33,14 +33,14 @@ For a discussion of function `scope` in relation to *IIFE*s and lexical `this`, 
 ### Function Arguments & Arity
 The arity of a function refers to the number of arguments a function expects. This is determined by the number of declared arguments in the function declaration and is available in the function's `.length` property.
 
-```
+```javascript
 function foo(a,b) { console.log(a, b); }
 foo.length;   // 2
 ```
 
 A functions arity is, and can be, necessarily different than the arguments it actually receives when called.  If we invoke a function with fewer arguments than it expects, the argument identifiers in the function for arguments not passed will be set to undefined.
 
-```
+```javascript
 foo(4, 5);  // => 4, 5
 foo(3);     // => 3, undefined
 foo();      // => undefined, undefined
@@ -48,7 +48,7 @@ foo();      // => undefined, undefined
 
 Within a function we can access all the arguments passed, both those declared in the function declaration and any extras (*you can pass more than the declared arguments to a function*) using the available `arguments` variable.
 
-```
+```javascript
 function args(a,b) {
    console.log("a,b: ", a, b);
    console.log("all: ", arguments);
@@ -62,7 +62,7 @@ The `arguments` object is a local variable available within all functions and it
 
 This feature allows Javascript functions to have variable arguments. To work with the arguments as a real array, you can simply convert the arguments object to an array.
 
-```
+```javascript
 function has() {
   let args = [].slice.call(arguments);
   args.forEach((arg) => console.log(arg));
@@ -77,7 +77,7 @@ has(1,2,3,4);
 ### Invoking functions
 Invoking a function is done using the `()` operator on the function name or variable holding the function expression.
 
-```
+```javascript
 var foo(){ /* do foo */ }   // declaration
 foo();   // invoke
 
@@ -92,7 +92,7 @@ bar();   // invoke
 
 We can also assign a function to a property on an object and invoke it through the standard object property access method as well.
 
-```
+```javascript
 let princess = {
    name: 'Leia Organa',
    say: function(msg) { console.log(this.name + ": " + msg); }
@@ -105,7 +105,7 @@ In this case, when invoking a function via an object's property it's assigned to
 
 However, using Javascript's `.call()` and `.apply()`, we can change that context when invoking the function.
 
-```
+```javascript
 let name = 'Han Solo';
 princess.say.call(this, "I know.");
 // => Han Solo: I know.
@@ -117,7 +117,7 @@ What just happened there?  Why would Han totally underplay that kind of declarat
 
 The only difference between `.call()` and `.apply()` is that `.apply()` only takes 2 parameters: a context object just like call, and an array of arguments (*instead of passing them as individual parameters*). Even though `.apply()` takes the arguments as an array, they are still passed normally to the function being invoked.
 
-```
+```javascript
 function add(a,b) { console.log(a + b); }
 add.apply(null, [2,3]);
 // 5
@@ -128,7 +128,7 @@ In most cases with single functions, the lexical context of `this` is probably n
 
 Why would we use `.apply()` and not just use `.call()` everywhere?  Let's say you had a function called `after()` that would wrap an existing function and ensure some code was executed every time after that function was called. Using `.call()` would be nearly impossible given that you don't know the number of parameters that function might be called with - without resorting to something potentially dangerous like using `eval()`.
 
-```
+```javascript
 function lots(a,b,c,d) {
    console.log([a,b,c,d].join(','));
 }
@@ -143,7 +143,7 @@ lots(1,2,3,4);
 ```
 This is where `.apply()` and the `arguments` local variable come to the rescue:
 
-```
+```javascript
 function after(fn) {
   var orig = fn;
   return function() {
@@ -163,7 +163,7 @@ Javascript also gives us the `.bind()` method on functions to allow us to *bind*
 
 We can use the same example from above, but allow our `after` function to take a second parameter to specify the calling context the function should be executed with.
 
-```
+```javascript
 var doctor = {
   name: 'Matt Smith',
   who: function named() {
@@ -187,7 +187,7 @@ thedoctor();   // David Tennant
 
 `.bind()` also allows us to pre-bind one or more argument parameters to the function as well.  For instance:
 
-```
+```javascript
 function add(a,b) { return a + b; }
 var add2 = add.bind(null, 2);
 add2(4);   // 6
