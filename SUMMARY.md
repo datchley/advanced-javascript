@@ -10,6 +10,7 @@
 * [Asynchronous Concepts](asynchronous_concepts.md)
    * [Browser APIs](browser_apis.md)
    * [Events](events.md)
+   * Promises
 * [Common Idioms](common_idioms.md)
 * [Working in ES6](working_in_es6.md)
 
