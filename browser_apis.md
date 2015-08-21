@@ -1,4 +1,4 @@
-[TODO]: Cover the following Browser APIs:
+[**TODO**]: Cover the following Browser APIs:
 
 - `setTimeout()`
 - `setInterval()`
