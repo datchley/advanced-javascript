@@ -8,6 +8,7 @@
    * [Scope](scope.md)
 * [Understanding Prototypes](understanding_prototypes.md)
 * [Asynchronous Concepts](asynchronous_concepts.md)
+   * Browser APIs
 * [Common Idioms](common_idioms.md)
 * [Working in ES6](working_in_es6.md)
 
