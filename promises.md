@@ -9,7 +9,8 @@ Promises give us a way to handle asynchronous processing in a more synchronous f
 2. We are guaranteed to receive the value, regardless of when we register a handler for it, even if it's already resolved (*in contrast to events, which can incur race conditions*).
 
 For example:
-```
+
+```javascript
 // an immediately resolved promise
 var p2 = Promise.resolve("foo"); 
 
@@ -37,7 +38,7 @@ Let's get into the details...
 ## Creating Promises
 The standard way to create a Promise is by using the `new Promise` constructor which accepts a handler that is given two functions as parameters. The first handler (*typically named* `resolve`) is a function to call with the future value when it's ready; and the second handler (*typically named* `reject`) is a function to call to reject the Promise if it can't resolve the future value.
 
-```
+```javascript
 var p = new Promise(function(resolve, reject) {
    if (/* condition */) {
       resolve(/* value */);  // fulfilled successfully
@@ -58,7 +59,7 @@ A Promise can only be "settled" (meaning it has been *fulfilled* or *rejected*) 
 
 You can also create an immediately resolved Promise by using the `Promise.resolve()` method.
 
-```
+```javascript
 var p = Promise.resolve(42);
 ```
 
@@ -67,14 +68,14 @@ Once we have a Promise, it can be passed around as a value.  The Promise is a st
 
 To consume the Promise - meaning we want to process the Promises value once fulfilled - we attach a handler to the Promise using it's `.then()` method. This method takes a function that will be passed the resolved value of the Promise once it is fulfilled.
 
-```
+```javascript
 var p = new Promise((resolve, reject) => resolve(5));
 p.then((val) => console.log(val)); // 5
 ```
 
 A Promise's `.then()` method actually takes two possible parameters. The first is the function to be called when the Promise is fulfilled and the second is a function to be called if the Promise is rejected.
 
-```
+```javascript
 p.then((val) => console.log("fulfilled:", val),
        (err) => console.log("rejected: ", err));
 ```
@@ -83,7 +84,7 @@ You can omit either handler in a `.then()`, so sending a `null` as the first han
 
 The following are equivalent:
 
-```
+```javascript
 p.then((val) => console.log("fulfilled:", val))
  .catch((err) => console.log("rejected:", err));
 
@@ -98,7 +99,7 @@ You should use `.catch()` for handling errors, rather than `.then(null, fn)`.  U
 
 Throwing an exception in a Promise will automatically reject that Promise as well.  This is the same for `.then()` handlers and their results and return values as well - a thrown error is wrapped in a Promise and treated as a rejection.  For example:
 
-```
+```javascript
 // A Promise that throws, rather than explicitly reject
 var p1 = new Promise((resolve, reject) => {
   if (true)  
@@ -129,7 +130,7 @@ p2.then((val) => val + 2)
 
 Note that the exception thrown in the second block above (*on Promise `p2`'s chain*), within the handler, does not reject the original promise. So if we had setup another process flow on that same promise, it would continue to work as long as no handler in its chain threw an exception.
 
-```
+```javascript
 // Second chain attached to fulfilled Promise
 p2.then((val) => val + 4)
  .then((val) => console.log("got:", val))
@@ -143,7 +144,7 @@ Sometimes we're working with multiple Promises and we need to be able to start o
 
 For example, let's say we have a function wrapper around jQuery's `.getJSON()` method to fetch JSON results from a url which returns a Promise.
 
-```
+```javascript
 var fetchJSON = function(url) {
   return new Promise((resolve, reject) => {
     $.getJSON(url)
@@ -153,7 +154,8 @@ var fetchJSON = function(url) {
 }
 ```
 Now we can setup an array of promises which will fulfill with the JSON results of fetching the response from each of the urls in our `itemUrls` array.  `Promise.all()` will not fulfill until *all* the Promises in the array have fulfilled.  If any of those promises are rejected (*or throw an exception*) then the `Promise.all()` Promise will reject and the `.catch()` below will be triggered.
-```
+
+```javascript
 var itemUrls = {
     'http://www.api.com/items/1234',
     'http://www.api.com/items/4567'
@@ -180,7 +182,7 @@ As an example, let's say we want to fetch JSON from a url to process. However, w
 
 We can accomplish this as follows:
 
-```
+```javascript
 // A Promise that times out after ms milliseconds
 function delay(ms) {
   return new Promise((resolve, reject) => {
