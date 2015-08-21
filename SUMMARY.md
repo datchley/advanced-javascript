@@ -11,6 +11,7 @@
    * [Browser APIs](browser_apis.md)
    * [Events](events.md)
    * [Promises](promises.md)
+       * Promise Patterns
 * [Common Idioms](common_idioms.md)
 * [Working in ES6](working_in_es6.md)
 
