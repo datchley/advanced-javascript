@@ -8,10 +8,10 @@
    * [Scope](scope.md)
 * [Understanding Prototypes](understanding_prototypes.md)
 * [Asynchronous Concepts](asynchronous_concepts.md)
+   * [Promise Patterns](promise_patterns.md)
    * [Browser APIs](browser_apis.md)
    * [Events](events.md)
    * [Promises](promises.md)
-* [Promise Patterns](promise_patterns.md)
 * [Common Idioms](common_idioms.md)
 * [Working in ES6](working_in_es6.md)
 
