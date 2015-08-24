@@ -5,9 +5,9 @@ Scope, in general, refers to how the browser's javascript engine looks up identi
 
 Javascript has two lexical scopes: *global* and *function* level. With ES6 there is also *block* level scoping; but more on that later. These lexical scopes are also nested. For instance:
 
-![](js-es5-scope--1-.png)
+![](js-es5-scope-2.png)
 
-Here we have three separate lexical scopes. The default global scope which contains declarations for `a` and `foo`, the lexical scope declared within the `foo()` function which contains `x`, `b` and `bar`, and the lexical scope declared within `bar()` which contains `y` and `d`.  
+Here we have three separate lexical scopes. The default global scope which contains declarations for `a` and `foo`, the lexical scope declared within the `foo()` function which contains `x`, `b` and `bar`, and the lexical scope declared within `bar()` which contains `y` and `c`.  
 
 Notice that outside of a function, the default scope of declared variables is the global scope (*`window` in the browser*). Also, that scopes can be nested.  Nested scopes have access to the scope's they are declared in, which has two important implications:
 
