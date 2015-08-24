@@ -180,8 +180,4 @@ sum = res.reduce(addToSum, 0);
 assert(res.toString() == [4,16,36,64,100], sum == 220);
 {% context %}
 // This is context code available everywhere
-// The user will be able to call magicFunc in his code
-function magicFunc() {
-    return 3;
-}
 {% endexercise %}
