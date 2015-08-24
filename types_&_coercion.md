@@ -128,9 +128,7 @@ x == y;
 | Boolean | <ul><li>The result is 1 if the argument is true.</li><li>The result is +0 if the argument is false.</li></ul> |
 | Number | The result equals the input argument (no conversion). |
 | String | In effect evaluates Number(string)<ul><li>“abc” -> NaN</li><li>“123” -> 123</li></ul> |
-| Object	Apply the following steps:
-1. Let primValue be ToPrimitive(input argument, hint Number).
-2. Return ToNumber(primValue).
+| Object | Apply the following steps:<ol><li>Let primValue be ToPrimitive(input argument, hint Number).</li><li>Return ToNumber(primValue).</li></ol> |
 
 **toPrimitive** Algorithm
 
