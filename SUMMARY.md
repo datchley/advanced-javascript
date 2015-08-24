@@ -10,7 +10,7 @@
    * [What is a Prototype?](what_is_a_prototype.md)
    * [Inheritance via Prototypes](inheritance_via_prototypes.md)
    * [Delegation using Object.create()](delegation_using_objectcreate.md)
-   * Composition using Mixins
+   * [Composition using Mixins](composition_using_mixins.md)
 * [Asynchronous Concepts](asynchronous_concepts.md)
    * [Browser APIs](browser_apis.md)
    * [Events](events.md)
