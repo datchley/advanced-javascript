@@ -68,4 +68,19 @@ isNull(c);  // false
 ### Truthy and Falsey 
 There's been argument about whether to use '==' or '===' in Javascript for ages and ages.  Some people say you should always use strict equals '===' and there are those that disagree. I'm one of those that disagree; and it comes down to whether the check or comparison being made is explicit or implicit and if allowing coercion of the value being checked is actually advantageous given the context.  There is no hard and fast rule.
 
+But understanding some of the concepts surrounding coercion involves understanding the nature of truthiness and falsiness in Javascript. This is a deep, deep subject so we'll just try and cover the important points here.
+
+Rather than mention all the possible values that evaluate to true, or are truthy, in Javascript, it's easier to just mention all the falsey values, since there are far fewer:
+
+* `undefined`
+* `null`
+* `false`
+* `+0`, `-0`, and `NaN`
+* `""` or `''`
+
+That's it.  All of those values, when coerced to boolean, are false. Everything else is truthy.  Seems pretty straight forward.
+
+
+
+
 
