@@ -7,7 +7,7 @@
    * [Types & Coercion](types_&_coercion.md)
    * [Scope](scope.md)
 * [Understanding Prototypes](understanding_prototypes.md)
-   * What is a Prototype?
+   * [What is a Prototype?](what_is_a_prototype.md)
    * Inheritance via Prototypes
    * Delegation using Object.create()
    * Composition using Mixins
