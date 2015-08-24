@@ -98,8 +98,27 @@ Coercion is the process of changing one value's type to another type. This might
 
 We mentioned the `==` equals and `===` strict equals operators previously. Let's be sure we understand how they work:
 
+#### `==`
 Using `==` is fairly liberal, as the operator will convert one or both of the operand values before comparison. Typically, one or both are converted to a `number`.  You, and Douglas Crockford, might consider this scary; but really, it's not.
 
+Here's the pseudo logic for the `==` operator:
+
+```javascript
+x == y;
+```
+| x | y | result |
+| -- | -- | -- |
+| `null` | `undefined` | **true** |
+| `undefined` | `null` | **true** |
+| 0:5 | 1:5 | 2:5 |
+| 0:6 | 1:6 | 2:6 |
+| 0:7 | 1:7 | 2:7 |
+| 0:8 | 1:8 | 2:8 |
+
+
+1. if the type of `x` and `y` are the same, go to `===` algorithm.
+
+#### `===`
 
 
 
