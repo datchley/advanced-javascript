@@ -1,4 +1,6 @@
 
+# Understanding Prototypes
+
 In this section, we're going to focus on the following:
 
 - how Javascript's prototype based objects work
