@@ -12,6 +12,6 @@
    * [Events](events.md)
    * [Promises](promises.md)
    * [Promise Patterns](promise_patterns.md)
-* [Common Idioms](common_idioms.md)
 * [Working in ES6](working_in_es6.md)
+* [Common Idioms](common_idioms.md)
 
