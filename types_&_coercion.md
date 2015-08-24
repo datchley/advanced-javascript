@@ -104,6 +104,7 @@ Using `==` is fairly liberal, as the operator will convert one or both of the op
 Here's the pseudo logic for the `==` operator:
 
 ```javascript
+// Non-strict comparison operator (will coerce)
 x == y;
 ```
 | x | y | result |
@@ -119,23 +120,64 @@ x == y;
 | `object` | `string` or `number` | `toPrimitive(x) == y` |
 |…|…| otherwise…`false`|
 
-**toNumber** Algorithm
+##### `toNumber()` Algorithm
 
 | argument | result |
 | -- | -- |
-| Undefined | NaN |
-| Null | +0 |
-| Boolean | <ul><li>The result is 1 if the argument is true.</li><li>The result is +0 if the argument is false.</li></ul> |
-| Number | The result equals the input argument (no conversion). |
-| String | In effect evaluates Number(string)<ul><li>“abc” -> NaN</li><li>“123” -> 123</li></ul> |
-| Object | Apply the following steps:<ol><li>Let primValue be ToPrimitive(input argument, hint Number).</li><li>Return ToNumber(primValue).</li></ol> |
+| `null` | NaN |
+| `null` | +0 |
+| `boolean` | <ul><li>The result is `1` if the argument is true.</li><li>The result is `+0` if the argument is false.</li></ul> |
+| `number` | The result equals the input argument (no conversion). |
+| `string` | In effect evaluates `Number(string)`<ul><li>`“abc”` -> `NaN`</li><li>`“123”` -> `123`</li></ul> |
+| `object` | Apply the following steps:<ol><li>Let `primValue` be `toPrimitive(input argument)`.</li><li>Return `toNumber(primValue)`.</li></ol> |
 
-**toPrimitive** Algorithm
+##### `toPrimitive()` Algorithm
+
+| argument | result |
+| -- | -- |
+| `object` | (*in the case of equality operator coercion*) if valueOf returns a primitive, return it. Otherwise if toString returns a primitive return it. Otherwise throw an error |
+| otherwise… | The result equals the input argument (no conversion). |
+
 
 #### `===`
 
+The checks for the strict equals are even more straight forward, as we're dealing with values of the same type.  If they aren't the same type, `===` just returns false.
 
+```javascript
+// Strict comparison operator (will NOT coerce)
+x === y;
+```
 
+| x | y | result |
+| -- | -- | -- |
+| `undefined` or `null` | `undefined` or `null` | `true` |
+| `number` | x same value as y (but not `NaN`) | `true` |
+| `string` | x and y are identical characters | `true` |
+| `boolean` | x and y are both `true` or both `false` | `true` |
+| `object` | x and y reference same object | `true` |
+| | otherwise…	| false |
 
+#### Applying this understanding...
+Just taking the __"never use `==`, always use `===`"__ mantra can be overkill and, frankly, unnecessary if you understand the logic used above in handling non-strict comparison checking.
 
+```javascript
+// Overkill
+if (typeof x === 'object') { /* ... */ }
 
+// Use '=='
+if (typeof x == 'object') { /* ... */ }
+```
+
+It is unnecessary to use `===` here, since `typeof` always returns string, so the types of the operands are the same. Using `==` is coercion free in this case.
+
+```javascript
+// Overkill
+if (x === undefined && x === null) /* ... */
+
+// Use '==', just check for null
+if (x == null) { /* ... */ }
+```
+
+Because `null` and `undefined` are equal to each other; and since there is a slight possibility that `undefined` might be redefined, just compare to `null` to check if something is `undefined` or `null`.
+
+If you know when coercion will happen, you can make better use of `==`, and help to clean up type and value checking in your code.
