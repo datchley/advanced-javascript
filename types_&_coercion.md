@@ -108,12 +108,16 @@ x == y;
 ```
 | x | y | result |
 | -- | -- | -- |
-| `null` | `undefined` | **true** |
-| `undefined` | `null` | **true** |
-| 0:5 | 1:5 | 2:5 |
-| 0:6 | 1:6 | 2:6 |
-| 0:7 | 1:7 | 2:7 |
-| 0:8 | 1:8 | 2:8 |
+|…|…|`x` and `y` same type… `true`|
+| `null` | `undefined` | `true` |
+| `undefined` | `null` | `true` |
+| `number` | `string` | `x == toNumber(y)` |
+| `string` | `number` | `toNumber(x) == y` |
+| `boolean` | (any) | `toNumber(x) == y` |
+| (any) | `boolean` | `x == toNumber(y)` |
+| `string` or `number` | `object` | `x == toPrimitive(y)` |
+| `object` | `string` or `number` | `toPrimitive(x) == y` |
+|…|…| otherwise…`false`|
 
 
 1. if the type of `x` and `y` are the same, go to `===` algorithm.
