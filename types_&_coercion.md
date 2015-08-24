@@ -119,8 +119,23 @@ x == y;
 | `object` | `string` or `number` | `toPrimitive(x) == y` |
 |…|…| otherwise…`false`|
 
+**toNumber** Algorithm
 
-1. if the type of `x` and `y` are the same, go to `===` algorithm.
+| argument | result |
+| -- | -- |
+| Undefined | NaN |
+| Null | +0 |
+| Boolean | <ul><li>The result is 1 if the argument is true.</li>
+<li>The result is +0 if the argument is false.</li></ul> |
+| Number | The result equals the input argument (no conversion). |
+| String | In effect evaluates Number(string) |
+| “abc” -> NaN
+| “123” -> 123
+| Object	Apply the following steps:
+1. Let primValue be ToPrimitive(input argument, hint Number).
+2. Return ToNumber(primValue).
+
+**toPrimitive** Algorithm
 
 #### `===`
 
