@@ -8,6 +8,7 @@
    * [Scope](scope.md)
 * [Understanding Prototypes](understanding_prototypes.md)
    * What is a Prototype?
+   * Inheritance via Prototypes
 * [Asynchronous Concepts](asynchronous_concepts.md)
    * [Browser APIs](browser_apis.md)
    * [Events](events.md)
