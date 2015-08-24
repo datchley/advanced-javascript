@@ -32,6 +32,7 @@ Some caveats to look out for are checking for specific types like:
 
 * `NaN` - a special value that is not equal to itself
 * `null` - which is falsey and it's type is 'object'
+* `null` and `undefined` are equal to each other
 
 Checking for `NaN` can be done in two ways: manually, or with the builtin `isNaN()` function.
 
@@ -65,6 +66,18 @@ isNull(b);  // false
 isNull(c);  // false
 ```
 
+Checking for `undefined` is usually easier by checking for `null`, given that the two are equal and there is the rare possibility that the `undefined` value might be redefined.
+
+```
+function isUndefined(o) {
+  return o == null;
+}
+
+var b;
+isUndefined(b);  // true
+
+```
+
 ### Truthy and Falsey 
 There's been argument about whether to use '==' or '===' in Javascript for ages and ages.  Some people say you should always use strict equals '===' and there are those that disagree. I'm one of those that disagree; and it comes down to whether the check or comparison being made is explicit or implicit and if allowing coercion of the value being checked is actually advantageous given the context.  There is no hard and fast rule.
 
@@ -79,6 +92,15 @@ Rather than mention all the possible values that evaluate to true, or are truthy
 * `""` or `''`
 
 That's it.  All of those values, when coerced to boolean, are false. Everything else is truthy.  Seems pretty straight forward.
+
+### Coercion
+Coercion is the process of changing one value's type to another type. This might be done in a check for truthiness of a given value, as we've been discussing above. Or, it might be done in a check for equality between two values.
+
+We mentioned the `==` equals and `===` strict equals operators previously. Let's be sure we understand how they work:
+
+Using `==` is fairly liberal, as the operator will convert one or both of the operand values before comparison. Typically, one or both are converted to a `number`.  You, and Douglas Crockford, might consider this scary; but really, it's not.
+
+
 
 
 
