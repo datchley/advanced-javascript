@@ -10,6 +10,7 @@
    * What is a Prototype?
    * Inheritance via Prototypes
    * Delegation using Object.create()
+   * Composition using Mixins
 * [Asynchronous Concepts](asynchronous_concepts.md)
    * [Browser APIs](browser_apis.md)
    * [Events](events.md)
