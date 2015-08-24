@@ -196,3 +196,40 @@ add2(3,6); // 5
 Here, we create a new function by *partially applying* the first argument to `add()`.  Passing any subsequent parameters makes no difference.
 
 Keep in mind that `.call()`, `.apply()` and `.bind()` can not be used with ES6's `=>` functions to change the context of `this`, as `this` is explicitly bound to the enclosing scope where the function is declared.  You can use `.apply()` and `.call()` to pass in argument parameters, but the first argument is ignored for changing context.
+
+---
+### Exercises
+
+
+{% exercise %}
+Use 'apply()' to call the function `add(x,y)` with the given 'operands' array as the arguments. Then, use 'bind()' to create a partially applied function named 'add4(y)' that takes a number and adds four to it.
+{% initial %}
+function add(x,y) {
+  return x + y;
+}
+
+var operands = [5,8],
+    add4 = undefined; /* TODO: implement using bind() */
+    sum1, sum2;
+
+sum1 = /* TODO: call add(x,y) using apply */;
+
+sum2 = add4(8);
+
+{% solution %}
+function add(x,y) {
+  return x + y;
+}
+
+var operands = [5,8],
+    add4 = add.bind(this, 4),
+    sum1, sum2;
+
+sum1 = add.apply(this, operands);
+
+sum2 = add4(8);
+{% validation %}
+assert(sum1 == 13, sum2 == 12);
+{% context %}
+// This is context code available everywhere
+{% endexercise %}
