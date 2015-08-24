@@ -8,7 +8,7 @@
    * [Scope](scope.md)
 * [Understanding Prototypes](understanding_prototypes.md)
    * [What is a Prototype?](what_is_a_prototype.md)
-   * Inheritance via Prototypes
+   * [Inheritance via Prototypes](inheritance_via_prototypes.md)
    * Delegation using Object.create()
    * Composition using Mixins
 * [Asynchronous Concepts](asynchronous_concepts.md)
