@@ -98,7 +98,7 @@ Coercion is the process of changing one value's type to another type. This might
 
 We mentioned the `==` equals and `===` strict equals operators previously. Let's be sure we understand how they work:
 
-#### Non-Strict Equality Comparison: `==`
+#### Abstract Equality Comparison: `==`
 Using `==` is fairly liberal, as the operator will convert one or both of the operand values before comparison. Typically, one or both are converted to a `number`.  You, and Douglas Crockford, might consider this scary; but really, it's not.
 
 Here's the pseudo logic for the `==` operator:
@@ -107,10 +107,10 @@ Here's the pseudo logic for the `==` operator:
 // Non-strict comparison operator (will coerce)
 x == y;
 ```
-##### Liberal Comparison Algorithm
+##### Abstract Comparison Algorithm
 | x | y | result |
 | -- | -- | -- |
-|…|…|`x` and `y` same type… `true`|
+|…|…|`x` and `y` same type… see *strict comparison algorithm* |
 | `null` | `undefined` | `true` |
 | `undefined` | `null` | `true` |
 | `number` | `string` | `x == toNumber(y)` |
