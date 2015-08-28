@@ -136,8 +136,8 @@ x == y;
 
 | argument | result |
 | -- | -- |
-| `object` | (*in the case of equality operator coercion*) if valueOf returns a primitive, return it. Otherwise if toString returns a primitive return it. Otherwise throw an error |
-| otherwise… | The result equals the input argument (no conversion). |
+| `object` | (*in the case of equality operator coercion*) if `valueOf` returns a primitive, return it. Otherwise if `toString` returns a primitive return it. Otherwise throw an error |
+| otherwise… | The result equals the input argument (*no conversion*). |
 
 
 #### Strict Equality Comparison: `===`
