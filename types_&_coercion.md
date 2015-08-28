@@ -98,7 +98,7 @@ Coercion is the process of changing one value's type to another type. This might
 
 We mentioned the `==` equals and `===` strict equals operators previously. Let's be sure we understand how they work:
 
-#### `==` - Non-Strict Equality Comparison
+#### Non-Strict Equality Comparison: `==`
 Using `==` is fairly liberal, as the operator will convert one or both of the operand values before comparison. Typically, one or both are converted to a `number`.  You, and Douglas Crockford, might consider this scary; but really, it's not.
 
 Here's the pseudo logic for the `==` operator:
@@ -140,7 +140,7 @@ x == y;
 | otherwise… | The result equals the input argument (no conversion). |
 
 
-#### `===`
+#### Strict Equality Comparison: `===`
 
 The checks for the strict equals are even more straight forward, as we're dealing with values of the same type.  If they aren't the same type, `===` just returns false.
 
@@ -184,7 +184,7 @@ Because `null` and `undefined` are equal to each other; and since there is a sli
 If you know when coercion will happen, you can make better use of `==`, and help to clean up type and value checking in your code.
 
 ### Conditional Expressions
-Javascript handles conditional expressions, such as those found in `if` statements by coercing the results of evaluating the expression to a boolean value using the following algorithm.
+Javascript handles conditional expressions, such as those found in `if` statements, by coercing the results of evaluating the expression to a boolean value using the following algorithm.
 
 ##### toBoolean() Algorithm
 | x | result |
