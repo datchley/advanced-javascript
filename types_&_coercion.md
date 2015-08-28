@@ -98,7 +98,7 @@ Coercion is the process of changing one value's type to another type. This might
 
 We mentioned the `==` equals and `===` strict equals operators previously. Let's be sure we understand how they work:
 
-#### `==`
+#### `==` - Non-Strict Equality Comparison
 Using `==` is fairly liberal, as the operator will convert one or both of the operand values before comparison. Typically, one or both are converted to a `number`.  You, and Douglas Crockford, might consider this scary; but really, it's not.
 
 Here's the pseudo logic for the `==` operator:
@@ -107,6 +107,7 @@ Here's the pseudo logic for the `==` operator:
 // Non-strict comparison operator (will coerce)
 x == y;
 ```
+##### Liberal Comparison Algorithm
 | x | y | result |
 | -- | -- | -- |
 |…|…|`x` and `y` same type… `true`|
@@ -120,7 +121,7 @@ x == y;
 | `object` | `string` or `number` | `toPrimitive(x) == y` |
 |…|…| otherwise…`false`|
 
-##### `toNumber()` Algorithm
+##### toNumber() Algorithm
 
 | argument | result |
 | -- | -- |
@@ -131,7 +132,7 @@ x == y;
 | `string` | In effect evaluates `Number(string)`<ul><li>`“abc”` -> `NaN`</li><li>`“123”` -> `123`</li></ul> |
 | `object` | Apply the following steps:<ol><li>Let `primValue` be `toPrimitive(input argument)`.</li><li>Return `toNumber(primValue)`.</li></ol> |
 
-##### `toPrimitive()` Algorithm
+##### toPrimitive() Algorithm
 
 | argument | result |
 | -- | -- |
@@ -147,7 +148,7 @@ The checks for the strict equals are even more straight forward, as we're dealin
 // Strict comparison operator (will NOT coerce)
 x === y;
 ```
-
+##### Strict Comparison Algorithm
 | x | y | result |
 | -- | -- | -- |
 | `undefined` or `null` | `undefined` or `null` | `true` |
@@ -181,3 +182,17 @@ if (x == null) { /* ... */ }
 Because `null` and `undefined` are equal to each other; and since there is a slight possibility that `undefined` might be redefined, just compare to `null` to check if something is `undefined` or `null`.
 
 If you know when coercion will happen, you can make better use of `==`, and help to clean up type and value checking in your code.
+
+### Conditional Expressions
+Javascript handles conditional expressions, such as those found in `if` statements by coercing the results of evaluating the expression to a boolean value using the following algorithm.
+
+##### toBoolean() Algorithm
+| x | result |
+| -- | -- |
+| `undefined` | `false` |
+| `null` | `false` |
+| `number` | `false` if input is `+0`,`-0` or `NaN`, otherwise `true` |
+| `string` | `false` if input is empty string (*length zero*), otherwise `true` |
+| `boolean` | result equals input, no conversion |
+| `object` | `true` |
+
