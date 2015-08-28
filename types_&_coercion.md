@@ -125,8 +125,8 @@ x == y;
 
 | argument | result |
 | -- | -- |
-| `null` | NaN |
-| `null` | +0 |
+| `null` | `NaN` |
+| `null` | `+0` |
 | `boolean` | <ul><li>The result is `1` if the argument is true.</li><li>The result is `+0` if the argument is false.</li></ul> |
 | `number` | The result equals the input argument (no conversion). |
 | `string` | In effect evaluates `Number(string)`<ul><li>`“abc”` -> `NaN`</li><li>`“123”` -> `123`</li></ul> |
